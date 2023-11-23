@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">Capstone 2 App</string>
+    <string name="post">Post</string>
+    <string name="forum">Forum</string>
+    <string name="cPost">Create Post</string>
+
+    <string-array name="test_array1">
+        <item>hi</item>
+
+    </string-array>
+</resources>
