@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private static Button btnLogin,Register;
     private static EditText etEmail, etPass;
     private static JSONParser jParser = new JSONParser();
-    private static String urlHost = "http://172.22.68.113/Activities/Capstone2/loginApi.php";
+    private static String urlHost = "https://superphisal.000webhostapp.com/loginApi.php";
     private static String TAG_MESSAGE = "message", TAG_SUCCESS = "success";
     private static String online_dataset = "";
     public  String email = "";
@@ -33,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        getSupportActionBar().hide();
         sp = getSharedPreferences("AccountData", Context.MODE_PRIVATE);
         btnLogin = findViewById(R.id.buttonLogin);
         Register = findViewById(R.id.buttonLoginToReg);
@@ -102,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                         spEdit.putString("dateCreated", json.getString("dateCreated"));
                         spEdit.commit();
 
-                        Intent in = new Intent(LoginActivity.this, ForumActivity.class);
+                        Intent in = new Intent(LoginActivity.this, dashboardActivity.class);
 
                         startActivity(in);
 

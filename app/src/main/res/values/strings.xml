@@ -2,14 +2,15 @@
 
     <string name="app_name">Superphishal</string>
     <string name="post">Post</string>
-    <string name="forum">Forum</string>
-    <string name="cPost">Create Post</string>
+    <string name="forum">Browse Forum</string>
+    <string name="cPost">Create a Post</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="enterEmail">Enter your Email</string>
     <string name="regEmail">Register an Email</string>
     <string name="enterPass">Enter your Password</string>
     <string name="enterUsername">Enter your Username</string>
+    <string name="whatNext">What would you like to do?</string>
 
     <string-array name="test_array1">
         <item>hi</item>
