@@ -17,7 +17,7 @@ public class Create_Post extends AppCompatActivity {
     private static Button btnQuery;
     private static EditText etPostTitle, etPostContent;
     private static JSONParser jParser = new JSONParser();
-    private static String urlHost = "http://173.1.10.66/Activities/Capstone2/InsertTrans.php";
+    private static String urlHost = "http://superphisal.000webhostapp.com/InsertTrans.php";
     private static String TAG_MESSAGE = "message", TAG_SUCCESS = "success";
     private static String online_dataset = "";
     public static String postTitle = "";
@@ -54,6 +54,7 @@ public class Create_Post extends AppCompatActivity {
 
 
         @Override
+        //showing Message before executing POST
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog.setIndeterminate(false);
@@ -61,12 +62,12 @@ public class Create_Post extends AppCompatActivity {
             pDialog.setMessage(cMessage);
             pDialog.show();
         }
-
+        //execute POST
         protected String doInBackground(String... params) {
             int nSuccess;
             try {
                 ContentValues cv = new ContentValues();
-                //insert anything in this code
+                //insert anything in this "code" to be read by file linked using url
                 cPostSQL = "NULL" + " , '" + postTitle + " ' ,  '" + postContent + " ' ";
                 cv.put("code", cPostSQL);
                 JSONObject json = jParser.makeHTTPRequest(urlHost, "POST" , cv);
@@ -79,6 +80,7 @@ public class Create_Post extends AppCompatActivity {
                         return json.getString(TAG_MESSAGE);
                     }
                 } else {
+                    //error handling
                     return "HTTPSERVER_ERROR";
                 }
             } catch (JSONException e) {
@@ -86,7 +88,7 @@ public class Create_Post extends AppCompatActivity {
             }
             return null;
         }
-
+        //execute after POST
         protected void onPostExecute(String s) {
 
             super.onPostExecute(s);

@@ -23,7 +23,7 @@ public class ForumActivity extends AppCompatActivity {
 
     ArrayList<recyclerModel> recyclerModels = new ArrayList<>();
 
-    public static final String URL_PRODUCTS = "http://173.1.10.66/Activities/Capstone2/api.php";
+    public static final String URL_PRODUCTS = "https://superphisal.000webhostapp.com/api.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,6 @@ public class ForumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forum);
 
 
-        setRecyclerModels();
         loadProducts();
 
 
@@ -49,10 +48,10 @@ public class ForumActivity extends AppCompatActivity {
 
         /*
          * Creating a String Request
-         * The request type is GET defined by first parameter
-         * The URL is defined in the second parameter
-         * Then we have a Response Listener and a Error Listener
-         * In response listener we will get the JSON response as a String
+         * The request type GET defined in first parameter
+         * The URL defined in second parameter
+         * Then we have Response Listener and Error Listener
+         * In response listener gets the JSON response as String
          * */
         StringRequest stringRequest = new StringRequest(Request.Method.GET, URL_PRODUCTS,
                 new Response.Listener<String>() {

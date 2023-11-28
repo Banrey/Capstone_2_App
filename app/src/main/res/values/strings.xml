@@ -1,9 +1,13 @@
 <resources>
 
-    <string name="app_name">Capstone 2 App</string>
+    <string name="app_name">Superphishal</string>
     <string name="post">Post</string>
     <string name="forum">Forum</string>
     <string name="cPost">Create Post</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="enterEmail">Enter your Email</string>
+    <string name="enterPass">Enter your Password</string>
 
     <string-array name="test_array1">
         <item>hi</item>
