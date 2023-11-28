@@ -29,6 +29,8 @@ public class Create_Post extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_post);
+
+        getSupportActionBar().hide();
         btnQuery = (Button) findViewById(R.id.btnQuery);
         etPostTitle = (EditText) findViewById(R.id.editTextPostTitle);
         etPostContent = (EditText) findViewById(R.id.editTextPostContent);

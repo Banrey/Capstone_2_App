@@ -2,8 +2,10 @@ package com.example.capstone2app;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.app.StatusBarManager;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -33,6 +35,13 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+
+        getSupportActionBar().hide();
+
+
+        //hide action bar too
+
         btnRegister = (Button) findViewById(R.id.buttonReg);
         etEmail = (EditText) findViewById(R.id.editTextTextEmailAddress);
         etUsername = (EditText) findViewById(R.id.editTextTextPersonName);

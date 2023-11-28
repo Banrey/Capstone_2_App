@@ -7,7 +7,9 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="enterEmail">Enter your Email</string>
+    <string name="regEmail">Register an Email</string>
     <string name="enterPass">Enter your Password</string>
+    <string name="enterUsername">Enter your Username</string>
 
     <string-array name="test_array1">
         <item>hi</item>

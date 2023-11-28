@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private static Button btnLogin,Register;
     private static EditText etEmail, etPass;
     private static JSONParser jParser = new JSONParser();
-    private static String urlHost = "http://192.168.254.118/Activities/Capstone2/loginApi.php";
+    private static String urlHost = "http://172.22.68.113/Activities/Capstone2/loginApi.php";
     private static String TAG_MESSAGE = "message", TAG_SUCCESS = "success";
     private static String online_dataset = "";
     public  String email = "";
@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 new uploadDataToURL().execute();
+
 
             }
         });
@@ -100,6 +101,10 @@ public class LoginActivity extends AppCompatActivity {
                         spEdit.putString("accType", json.getString("accType"));
                         spEdit.putString("dateCreated", json.getString("dateCreated"));
                         spEdit.commit();
+
+                        Intent in = new Intent(LoginActivity.this, ForumActivity.class);
+
+                        startActivity(in);
 
                         //zToast.makeText(LoginActivity.this,json.toString(),Toast.LENGTH_SHORT);
                         return "Logged in as "+online_dataset;
