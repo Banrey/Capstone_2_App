@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     private static Button btnRegister;
     private static EditText etEmail, etUsername, etPass;
     private static JSONParser jParser = new JSONParser();
-    private static String urlHost = "https://superphisal.000webhostapp.com/apiRegister.php";
+    private static String urlHost = "http://192.168.254.108/Activities/caps2/apiRegister.php";
     private static String TAG_MESSAGE = "message", TAG_SUCCESS = "success";
     private static String online_dataset = "";
     public static String regEmail = "";

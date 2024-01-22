@@ -4,6 +4,7 @@
     <string name="post">Post</string>
     <string name="forum">Browse Forum</string>
     <string name="cPost">Create a Post</string>
+    <string name="login1">Change Account</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="enterEmail">Enter your Email</string>
@@ -11,6 +12,9 @@
     <string name="enterPass">Enter your Password</string>
     <string name="enterUsername">Enter your Username</string>
     <string name="whatNext">What would you like to do?</string>
+    <string name="savedAcc">Saved Account:</string>
+    <string name="passbtn">Your code will appear here</string>
+    <string name="decrypt">Decrypt Password</string>
 
     <string-array name="test_array1">
         <item>hi</item>

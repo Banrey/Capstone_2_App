@@ -13,19 +13,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class adapter_recyclerview extends RecyclerView.Adapter<adapter_recyclerview.myViewHolder> {
+    private final ForumInterface forumInterface;
     Context context;
     ArrayList<recyclerModel> recyclerModels;
 
-    public adapter_recyclerview(Context context, ArrayList<recyclerModel> recyclerModels ){
+    public adapter_recyclerview(Context context, ArrayList<recyclerModel> recyclerModels, ForumInterface forumInterface ){
         this.context = context;
         this.recyclerModels = recyclerModels;
+        this.forumInterface = forumInterface;
     }
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recycler_row,viewGroup,false);
-        return new myViewHolder(view);
+        return new myViewHolder(view, forumInterface);
     }
 
     @Override
@@ -45,12 +47,25 @@ public class adapter_recyclerview extends RecyclerView.Adapter<adapter_recyclerv
         TextView tvContent;
 
 
-        public myViewHolder(@NonNull View itemView) {
+        public myViewHolder(@NonNull View itemView, ForumInterface forumInterface) {
             super(itemView);
 
             etTitle = (EditText) itemView.findViewById(R.id.editTextPostTitle);
             tvContent = (TextView) itemView.findViewById(R.id.textViewPostContent);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(forumInterface != null){
+                        int pos = getAdapterPosition();
+
+                        if(pos != RecyclerView.NO_POSITION){
+                            forumInterface.onItemClick(pos);
+                        }
+                    }
+
+                }
+            });
         }
     }
 }

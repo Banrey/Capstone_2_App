@@ -9,11 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class dashboardActivity extends AppCompatActivity {
 TextView welcome;
 String username;
+String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,7 @@ String username;
 
         Button OpenForum = (Button) findViewById(R.id.buttonForum);
         Button CreateNewPost = (Button) findViewById(R.id.buttonCreatePost);
-        welcome = findViewById(R.id.textViewWelcomeUser);
+        welcome = findViewById(R.id.tvWelcomeAcc);
 
         SharedPreferences sp = getSharedPreferences("AccountData", Context.MODE_PRIVATE);
         username = sp.getString("username","");

@@ -22,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private static Button btnLogin,Register;
     private static EditText etEmail, etPass;
     private static JSONParser jParser = new JSONParser();
-    private static String urlHost = "https://superphisal.000webhostapp.com/loginApi.php";
+    private static String urlHost = "http://192.168.254.108/Activities/caps2/loginApi.php";
     private static String TAG_MESSAGE = "message", TAG_SUCCESS = "success";
     private static String online_dataset = "";
     public  String email = "";
@@ -54,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 email= etEmail.getText().toString();
                 pass = etPass.getText().toString();
-                pass = md5Encryption.MD5(pass);
 
 
                 new uploadDataToURL().execute();
@@ -67,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
     //POST starts here
 
     private class uploadDataToURL extends AsyncTask<String, String, String> {
-        String cPOST = "", cPostSQL = "", cMessage = "Querying data...";
+        String cPostEmail = "", cPostPass = "", cMessage = "Querying data...";
         int nPostValueIndex;
         ProgressDialog pDialog = new ProgressDialog(LoginActivity.this);
 
@@ -88,8 +87,11 @@ public class LoginActivity extends AppCompatActivity {
             try {
                 ContentValues cv = new ContentValues();
                 //insert anything in this "code" to be read by file linked using url
-                cPostSQL = "email = '"+ email+"' AND password='"+pass+"'";
-                cv.put("code", cPostSQL);
+                cPostEmail =  email ;
+                cPostPass = pass ;
+                cv.put("email", cPostEmail);
+                cv.put("password", cPostPass);
+
                 JSONObject json = jParser.makeHTTPRequest(urlHost, "POST" , cv);
                 if (json != null) {
                     nSuccess = json.getInt(TAG_SUCCESS);
@@ -102,9 +104,10 @@ public class LoginActivity extends AppCompatActivity {
                         spEdit.putString("username", json.getString("username"));
                         spEdit.putString("accType", json.getString("accType"));
                         spEdit.putString("dateCreated", json.getString("dateCreated"));
+                        spEdit.putString("accJSON", json.toString());
                         spEdit.commit();
 
-                        Intent in = new Intent(LoginActivity.this, dashboardActivity.class);
+                        Intent in = new Intent(LoginActivity.this, AccountsActivity.class);
 
                         startActivity(in);
 

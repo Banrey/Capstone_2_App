@@ -17,7 +17,7 @@ public class Create_Post extends AppCompatActivity {
     private static Button btnQuery;
     private static EditText etPostTitle, etPostContent;
     private static JSONParser jParser = new JSONParser();
-    private static String urlHost = "http://superphisal.000webhostapp.com/InsertTrans.php";
+    private static String urlHost = "http://192.168.254.108/Activities/caps2/InsertTrans.php";
     private static String TAG_MESSAGE = "message", TAG_SUCCESS = "success";
     private static String online_dataset = "";
     public static String postTitle = "";

@@ -1,5 +1,9 @@
 package com.example.capstone2app;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -19,9 +23,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ForumActivity extends AppCompatActivity {
+public class ForumActivity extends AppCompatActivity implements ForumInterface{
 
     ArrayList<recyclerModel> recyclerModels = new ArrayList<>();
+
+    SharedPreferences sp ;
 
     public static final String URL_PRODUCTS = "https://superphisal.000webhostapp.com/api.php";
 
@@ -30,6 +36,7 @@ public class ForumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum);
         getSupportActionBar().hide();
+        sp = getSharedPreferences("AccountData", Context.MODE_PRIVATE);
 
 
         loadProducts();
@@ -38,12 +45,7 @@ public class ForumActivity extends AppCompatActivity {
     }
 
 
-    public void setRecyclerModels() {
-        String[] postTitles = getResources().getStringArray(R.array.test_array1);
-        for (String postTitle : postTitles) {
-            recyclerModels.add(new recyclerModel(postTitle, postTitle));
-        }
-    }
+
 
     private void loadProducts() {
 
@@ -73,13 +75,15 @@ public class ForumActivity extends AppCompatActivity {
                                 JSONObject post = array.getJSONObject(i);
 
                                 //adding the product to list
-                                recyclerModels.add(new recyclerModel(post.getString("title"), post.getString("content")));
+                                recyclerModels.add(new recyclerModel(post.getString("title"), post.getString("content"), post.getInt("postID")));
                             }
                             RecyclerView recyclerView = findViewById(R.id.myRecycler);
-                            adapter_recyclerview adapter = new adapter_recyclerview(ForumActivity.this, recyclerModels);
+                            adapter_recyclerview adapter = new adapter_recyclerview(ForumActivity.this, recyclerModels, ForumActivity.this);
 
                             recyclerView.setAdapter(adapter);
                             recyclerView.setLayoutManager(new LinearLayoutManager(ForumActivity.this));
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -98,5 +102,15 @@ public class ForumActivity extends AppCompatActivity {
 
         //adding our stringrequest to queue
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    @Override
+    public void onItemClick(int pos) {
+
+
+        Intent intent = new Intent(ForumActivity.this, Post.class);
+        startActivity(intent);
+
+
     }
 }
